@@ -19,7 +19,7 @@ $aplayer = new APlayerHandle;
 $aplayer->init();
 ```
 
-Shortcode:
+Shortcode example:
 ```
 [aplayer mutex="true" autoplay="true" theme="#b7daff" preload="auto" mode="circulation" maxheight="500"]
 [aplayer_trac title="あっちゅ～ま青春!" author="七森中☆ごらく部" src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" pic="http://devtest.qiniudn.com/あっちゅ～ま青春!.jpg"]
@@ -27,10 +27,12 @@ Shortcode:
 [/aplayer]
 ```
 
-Audio tag shortcode:
+Audio tag shortcode example:
 ```
 [audio src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" title="あっちゅ～ま青春!" author="七森中☆ごらく部"]
 ```
+
+More information: [https://kn007.net/topics/wordpress-blog-use-new-html5-player-aplayer/](https://kn007.net/topics/wordpress-blog-use-new-html5-player-aplayer/) 
 
 ## Thank you list
 
@@ -63,7 +65,7 @@ $aplayer = new APlayerHandle;
 $aplayer->init();
 ```
 
-短代码调用方式：
+短代码调用方式举例：
 ```
 [aplayer mutex="true" autoplay="true" theme="#b7daff" preload="auto" mode="circulation" maxheight="500"]
 [aplayer_trac title="あっちゅ～ま青春!" author="七森中☆ごらく部" src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" pic="http://devtest.qiniudn.com/あっちゅ～ま青春!.jpg"]
@@ -71,10 +73,12 @@ $aplayer->init();
 [/aplayer]
 ```
 
-Audio短代码调用方式：
+Audio短代码调用方式举例：
 ```
 [audio src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" title="あっちゅ～ま青春!" author="七森中☆ごらく部"]
 ```
+
+详细说明见：[https://kn007.net/topics/wordpress-blog-use-new-html5-player-aplayer/](https://kn007.net/topics/wordpress-blog-use-new-html5-player-aplayer/) 
 
 ## 特别鸣谢
 
