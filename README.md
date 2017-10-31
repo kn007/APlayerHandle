@@ -19,6 +19,18 @@ $aplayer = new APlayerHandle;
 $aplayer->init();
 ```
 
+Shortcode:
+```
+[aplayer mutex="true" autoplay="true" theme="#b7daff" preload="auto" mode="circulation" maxheight="500"]
+[aplayer_trac title="あっちゅ～ま青春!" author="七森中☆ごらく部" src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" pic="http://devtest.qiniudn.com/あっちゅ～ま青春!.jpg"]
+[aplayer_trac title="回レ！雪月花" author="小倉唯" src="http://devtest.qiniudn.com/回レ！雪月花.mp3" pic="http://devtest.qiniudn.com/回レ！雪月花.jpg"]
+[/aplayer]
+```
+
+Audio tag shortcode:
+```
+[audio src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" title="あっちゅ～ま青春!" author="七森中☆ごらく部"]
+```
 
 ## Thank you list
 
@@ -49,6 +61,19 @@ DIYgod, the author of APlayer. [Github repo](https://github.com/MoePlayer/APlaye
 class_exists('APlayerHandle') or require(get_template_directory() . '/class.aplayer.php');
 $aplayer = new APlayerHandle;
 $aplayer->init();
+```
+
+短代码调用方式：
+```
+[aplayer mutex="true" autoplay="true" theme="#b7daff" preload="auto" mode="circulation" maxheight="500"]
+[aplayer_trac title="あっちゅ～ま青春!" author="七森中☆ごらく部" src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" pic="http://devtest.qiniudn.com/あっちゅ～ま青春!.jpg"]
+[aplayer_trac title="回レ！雪月花" author="小倉唯" src="http://devtest.qiniudn.com/回レ！雪月花.mp3" pic="http://devtest.qiniudn.com/回レ！雪月花.jpg"]
+[/aplayer]
+```
+
+Audio短代码调用方式：
+```
+[audio src="http://devtest.qiniudn.com/あっちゅ～ま青春!.mp3" title="あっちゅ～ま青春!" author="七森中☆ごらく部"]
 ```
 
 ## 特别鸣谢
