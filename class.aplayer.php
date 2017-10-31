@@ -4,11 +4,11 @@
 *	APlayer是一个美观大方、实用的HTML5播放器，由DIYgod编写，项目地址：https://github.com/MoePlayer/APlayer
 *
 *	调用APlayerHandle类并进行初始化，可以很简便的在WordPress使用上APlayer
-*	短代码调用方法详见博客文章：
+*	短代码调用方法详见博客文章：https://kn007.net/topics/wordpress-blog-use-new-html5-player-aplayer/
 *
 *	支持原生[audio]标签，前提是增加title参数，并且使用src参数
 *
-*	此代码以MIT许可协议授权，作者kn007，写于2017年10月31日
+*	此代码以MIT许可协议授权，作者kn007，写于2017年10月31日。Github地址：https://github.com/kn007/APlayerHandle
 **/
 
 class APlayerHandle {
@@ -139,8 +139,8 @@ class APlayerHandle {
 
 		if ( empty( $atts['title'] ) || empty( $atts['src'] ) ) return $html;
 
-		( $atts['loop'] == 'on' || wp_validate_boolean( $atts['loop'] ) === true ) Or $atts['mode'] = 'order';
-		( $atts['autoplay'] == 'on' || wp_validate_boolean( $atts['autoplay'] ) === true ) And $atts['autoplay'] = '' Or ( ( $atts['autoplay'] == 'off' || $atts['autoplay'] == '0' ) AND $atts['autoplay'] = 'false' );
+		( $atts['loop'] == 'true' || $atts['loop'] == 'on' || $atts['loop'] == '1' ) Or $atts['mode'] = 'order';
+		( $atts['autoplay'] == '' || $atts['autoplay'] == 'off' || $atts['autoplay'] == '0' ) AND $atts['autoplay'] = 'false' Or ( ( $atts['autoplay'] == 'true' || $atts['autoplay'] == 'on' || $atts['autoplay'] == '1' ) And $atts['autoplay'] = '' );
 
 		$player_attrs = array(
 			'mutex'              => $atts['mutex'],
