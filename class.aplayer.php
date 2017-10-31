@@ -18,6 +18,7 @@ class APlayerHandle {
 		add_shortcode( 'aplayer', array( $this, 'playlist_shortcode' ) );
 		add_shortcode( 'aplayer_trac', array( $this, 'trac_shortcode' ) );
 		add_action( 'admin_print_footer_scripts', array( $this, 'shortcode_buttons' ), 99999 );
+		add_filter( 'wp_audio_shortcode_override' , array( $this, 'override_wp_audio_shortcode' ), 1, 2 );
 	}
 
 	public function playlist_shortcode( $atts = array(), $content = '' ) {
@@ -114,5 +115,71 @@ class APlayerHandle {
 		if ( wp_script_is( 'quicktags' ) ) {
 			echo "<script type=\"text/javascript\">QTags.addButton('add_aplayer', 'aplayer', '[aplayer]','[/aplayer]');QTags.addButton('add_aplayer_trac', 'aplayer_trac', '[aplayer_trac title=\"\" author=\"\" src=\"\"]');</script>";
 		}
+	}
+
+	public function override_wp_audio_shortcode( $html = '', $atts = array() ) {
+		if ( '' !== $html ) return $html;
+
+		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) return $html;
+
+		$atts = shortcode_atts(
+			array(
+				'mutex'          => '',
+				'autoplay'       => '',
+				'theme'          => '',
+				'preload'        => '',
+				'mode'           => '',
+				'maxheight'      => '',
+				'loop'           => '',
+				'title'          => '',
+				'author'         => '',
+				'src'            => '',
+				'pic'            => '',
+			), $atts, 'audio' );
+
+		if ( empty( $atts['title'] ) || empty( $atts['src'] ) ) return $html;
+
+		if ( wp_validate_boolean( $atts['loop'] ) === false ) $atts['mode'] = 'order';
+		if ( wp_validate_boolean( $atts['autoplay'] ) === false ) $atts['autoplay'] = 'false';
+
+		$player_attrs = array(
+			'mutex'              => $atts['mutex'],
+			'autoplay'           => $atts['autoplay'],
+			'theme'              => $atts['theme'],
+			'preload'            => $atts['preload'],
+			'mode'               => $atts['mode'],
+			'maxheight'          => $atts['maxheight'],
+		);
+
+		$player_attr_strings = array();
+		foreach ( $player_attrs as $k => $v ) {
+			if ( $v == '' ) continue;
+			$player_attr_strings[] = $k . '="' . esc_attr( $v ) . '"';
+		}
+
+		if ( empty( $player_attr_strings ) ) {
+			$html .= '[aplayer]';
+		} else {
+			$html .= sprintf( '[aplayer %s]', join( ' ', $player_attr_strings ) );
+		}
+
+		$music_attrs = array(
+			'title'          => $atts['title'],
+			'author'         => $atts['author'],
+			'src'            => $atts['src'],
+			'pic'            => $atts['pic'],
+		);
+
+		$music_attr_strings = array();
+		foreach ( $music_attrs as $k => $v ) {
+			if ( $v == '' ) continue;
+			$music_attr_strings[] = $k . '="' . esc_attr( $v ) . '"';
+		}
+
+		$html .= sprintf( '[aplayer_trac %s]', join( ' ', $music_attr_strings ) );
+
+		$html .= '[/aplayer]';
+
+		return do_shortcode( $html );
 	}
 }
