@@ -10,7 +10,15 @@ Support `[audio]` tag, compatible with AMP.
 * WordPress
 * APlayer
 
-## How To Use
+## How To Using
+
+Put `class.aplayer.php` into your theme folder, then put this following code to your theme `functions.php`:
+```
+class_exists('APlayerHandle') or require(get_template_directory() . '/class.aplayer.php');
+$aplayer = new APlayerHandle;
+$aplayer->init();
+```
+
 
 ## Thank you list
 
@@ -35,6 +43,13 @@ DIYgod, the author of APlayer. [Github repo](https://github.com/MoePlayer/APlaye
 * APlayer
 
 ## 如何使用
+
+将`class.aplayer.php`放在你主题的根目录下，然后将下面代码放在`functions.php`里即可。
+```
+class_exists('APlayerHandle') or require(get_template_directory() . '/class.aplayer.php');
+$aplayer = new APlayerHandle;
+$aplayer->init();
+```
 
 ## 特别鸣谢
 
