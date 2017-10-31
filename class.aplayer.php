@@ -139,8 +139,8 @@ class APlayerHandle {
 
 		if ( empty( $atts['title'] ) || empty( $atts['src'] ) ) return $html;
 
-		( $atts['loop'] == 'on' ) Or $atts['mode'] = 'order';
-		( $atts['autoplay'] == 'on' || wp_validate_boolean( $atts['autoplay'] ) === true ) And $atts['autoplay'] = '' Or ( ( $atts['autoplay'] == 'off' ) AND $atts['autoplay'] = 'false' );
+		( $atts['loop'] == 'on' || wp_validate_boolean( $atts['loop'] ) === true ) Or $atts['mode'] = 'order';
+		( $atts['autoplay'] == 'on' || wp_validate_boolean( $atts['autoplay'] ) === true ) And $atts['autoplay'] = '' Or ( ( $atts['autoplay'] == 'off' || $atts['autoplay'] == '0' ) AND $atts['autoplay'] = 'false' );
 
 		$player_attrs = array(
 			'mutex'              => $atts['mutex'],
