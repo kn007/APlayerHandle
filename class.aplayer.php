@@ -12,7 +12,7 @@
 **/
 
 class APlayerHandle {
-	protected static $instance = 0;
+	protected $instance = 0;
 
 	public function init() {
 		add_shortcode( 'aplayer', array( $this, 'playlist_shortcode' ) );
